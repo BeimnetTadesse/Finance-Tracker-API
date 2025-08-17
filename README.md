@@ -1,5 +1,3 @@
-Perfect! I’ve added the **Profile** and **User Stats** endpoints to the formal documentation. Here’s the updated version:
-
 ---
 
 # Finance Tracker API Documentation
