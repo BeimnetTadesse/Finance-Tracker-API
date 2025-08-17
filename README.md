@@ -1,91 +1,162 @@
-# 💰 FinanceMate API
-
-FinanceMate is a personal finance tracking API built with Django Rest Framework. It allows users to manage their expenses, income, budgets, and savings goals in a secure and organized way.
+Perfect! I’ve added the **Profile** and **User Stats** endpoints to the formal documentation. Here’s the updated version:
 
 ---
 
-## 🚀 Authentication Endpoints
+# Finance Tracker API Documentation
 
-These endpoints handle user registration and login using JWT.
-
-- `POST /api/accounts/register/` — Register a new user
-- `POST /api/accounts/login/` — Log in to get access & refresh tokens
-- `POST /api/accounts/token/refresh/` — Refresh your access token using the refresh token
-
-🔐 **JWT Tokens**
-- **Access Token**: Short-lived; used for authenticated requests.
-- **Refresh Token**: Used to get a new access token without re-logging in.
+**Finance Tracker API** is a personal finance management backend built with Django REST Framework. It enables users to securely track and manage their expenses, income, budgets, categories, and savings goals. All endpoints are designed for authenticated users with JWT-based security.
 
 ---
 
-## 🌐 Core API Root
+## Table of Contents
 
-- `GET /api/core/` — Welcome endpoint with a simple greeting
-
----
-
-## 📂 Categories
-
-Organize your transactions using custom categories.
-
-- `GET /api/core/categories/` — List all categories
-- `POST /api/core/categories/` — Create a new category
-- `GET /api/core/categories/<id>/` — Retrieve a single category
-- `PUT /api/core/categories/<id>/` — Update a category
-- `PATCH /api/core/categories/<id>/` — Partially update a category
-- `DELETE /api/core/categories/<id>/` — Delete a category
+1. [Introduction](#introduction)
+2. [Base URL](#base-url)
+3. [Authentication Endpoints](#authentication-endpoints)
+4. [Profile & User Stats](#profile--user-stats)
+5. [Categories](#categories)
+6. [Transactions](#transactions)
+7. [Budgets](#budgets)
+8. [Savings Goals](#savings-goals)
+9. [Tech Stack](#tech-stack)
+10. [Notes](#notes)
 
 ---
 
-## 💸 Transactions
+## Introduction
 
-Track income and expenses.
+The Finance Tracker API provides a secure and organized way to manage personal finances. Users can:
 
-- `GET /api/core/transactions/` — List all transactions
-- `POST /api/core/transactions/` — Create a new transaction
-- `GET /api/core/transactions/<id>/` — Retrieve a single transaction
-- `PUT /api/core/transactions/<id>/` — Update a transaction
-- `PATCH /api/core/transactions/<id>/` — Partially update a transaction
-- `DELETE /api/core/transactions/<id>/` — Delete a transaction
-
----
-
-## 📊 Budgets
-
-Set monthly spending limits per category.
-
-- `GET /api/core/budgets/` — List all budgets
-- `POST /api/core/budgets/` — Create a new budget
-- `GET /api/core/budgets/<id>/` — Retrieve a single budget
-- `PUT /api/core/budgets/<id>/` — Update a budget
-- `PATCH /api/core/budgets/<id>/` — Partially update a budget
-- `DELETE /api/core/budgets/<id>/` — Delete a budget
+* Register and authenticate accounts
+* Categorize transactions
+* Record and view income and expenses
+* Set monthly budgets per category
+* Track savings goals and progress
 
 ---
 
-## 🎯 Savings Goals
+## Base URL
 
-Track progress toward your financial goals.
+```
+http://127.0.0.1:8000/api/
+```
 
-- `GET /api/core/goals/` — List all goals
-- `POST /api/core/goals/` — Create a new savings goal
-- `GET /api/core/goals/<id>/` — Retrieve a specific goal
-- `PUT /api/core/goals/<id>/` — Update a goal
-- `PATCH /api/core/goals/<id>/` — Partially update a goal
-- `DELETE /api/core/goals/<id>/` — Delete a goal
+All endpoints are prefixed with `/api/`.
 
 ---
 
-## 🧠 Tech Stack
+## Authentication Endpoints
 
-- Django & Django REST Framework
-- JWT Authentication
-- MySQL or PostgreSQL
+These endpoints handle **user registration and authentication** using JWT.
+
+| Endpoint                   | Method | Description                                       |
+| -------------------------- | ------ | ------------------------------------------------- |
+| `/accounts/register/`      | POST   | Register a new user account                       |
+| `/accounts/login/`         | POST   | Log in and receive access & refresh tokens        |
+| `/accounts/token/refresh/` | POST   | Refresh your access token using the refresh token |
+
+### JWT Tokens
+
+* **Access Token**: Short-lived token used for authenticated requests.
+* **Refresh Token**: Used to obtain a new access token without logging in again.
+
+**Example Authorization Header**:
+
+```
+Authorization: Bearer <access_token>
+```
 
 ---
 
-## 📌 Notes
+## Profile & User Stats
 
-- All endpoints (except registration/login) require JWT authentication.
-- Use your **access token** in the `Authorization` header like this:
-    Authorization: Bearer <access_token>
+Manage user profile and view personal statistics.
+
+| Endpoint             | Method      | Description                           |
+| -------------------- | ----------- | ------------------------------------- |
+| `/accounts/profile/` | GET         | Retrieve logged-in user’s profile     |
+| `/accounts/profile/` | PUT / PATCH | Update logged-in user’s profile       |
+| `/core/stats/`       | GET         | Retrieve stats for the logged-in user |
+
+---
+
+## Categories
+
+Manage custom categories for organizing transactions.
+
+| Endpoint                 | Method | Description                 |
+| ------------------------ | ------ | --------------------------- |
+| `/core/categories/`      | GET    | List all categories         |
+| `/core/categories/`      | POST   | Create a new category       |
+| `/core/categories/{id}/` | GET    | Retrieve a single category  |
+| `/core/categories/{id}/` | PUT    | Update a category           |
+| `/core/categories/{id}/` | PATCH  | Partially update a category |
+| `/core/categories/{id}/` | DELETE | Delete a category           |
+
+---
+
+## Transactions
+
+Track income and expenses efficiently.
+
+| Endpoint                   | Method | Description                    |
+| -------------------------- | ------ | ------------------------------ |
+| `/core/transactions/`      | GET    | List all transactions          |
+| `/core/transactions/`      | POST   | Create a new transaction       |
+| `/core/transactions/{id}/` | GET    | Retrieve a single transaction  |
+| `/core/transactions/{id}/` | PUT    | Update a transaction           |
+| `/core/transactions/{id}/` | PATCH  | Partially update a transaction |
+| `/core/transactions/{id}/` | DELETE | Delete a transaction           |
+
+---
+
+## Budgets
+
+Set monthly limits for spending per category.
+
+| Endpoint              | Method | Description               |
+| --------------------- | ------ | ------------------------- |
+| `/core/budgets/`      | GET    | List all budgets          |
+| `/core/budgets/`      | POST   | Create a new budget       |
+| `/core/budgets/{id}/` | GET    | Retrieve a single budget  |
+| `/core/budgets/{id}/` | PUT    | Update a budget           |
+| `/core/budgets/{id}/` | PATCH  | Partially update a budget |
+| `/core/budgets/{id}/` | DELETE | Delete a budget           |
+
+---
+
+## Savings Goals
+
+Monitor progress toward financial goals.
+
+| Endpoint            | Method | Description               |
+| ------------------- | ------ | ------------------------- |
+| `/core/goals/`      | GET    | List all goals            |
+| `/core/goals/`      | POST   | Create a new savings goal |
+| `/core/goals/{id}/` | GET    | Retrieve a specific goal  |
+| `/core/goals/{id}/` | PUT    | Update a goal             |
+| `/core/goals/{id}/` | PATCH  | Partially update a goal   |
+| `/core/goals/{id}/` | DELETE | Delete a goal             |
+
+---
+
+## Tech Stack
+
+* Django & Django REST Framework
+* JWT Authentication (`djangorestframework-simplejwt`)
+* MySQL or PostgreSQL (depending on deployment)
+
+---
+
+## Notes
+
+* All endpoints **except registration, login, and token refresh** require JWT authentication.
+* All data returned is scoped to the authenticated user.
+* Include the **access token** in the `Authorization` header for secure requests:
+
+  ```
+  Authorization: Bearer <access_token>
+  ```
+
+---
+
