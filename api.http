@@ -177,3 +177,19 @@ Content-Type: application/json
 ### Delete Goal
 DELETE http://localhost:8000/api/core/goals/1/
 
+
+### Get User Profile
+GET http://localhost:8000/api/accounts/profile/
+
+
+### Update Profile
+PATCH http://localhost:8000/api/accounts/profile/
+Content-Type: application/json
+
+{
+  "email": "newmail@example.com"
+}
+
+
+### Get User Stats
+GET http://localhost:8000/api/core/stats/
