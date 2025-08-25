@@ -1,0 +1,179 @@
+### Register a new user
+POST http://localhost:8000/api/accounts/register/
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "email": "test@example.com",
+  "password": "TestPass123!",
+  "password2": "TestPass123!"
+}
+
+
+### Login user
+POST http://localhost:8000/api/accounts/login/
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "password": "TestPass123!"
+}
+
+
+### Refresh token
+POST http://localhost:8000/api/accounts/token/refresh/
+Content-Type: application/json
+
+{
+  "refresh": "PASTE_REFRESH_TOKEN_HERE"
+}
+
+
+### Welcome message
+GET http://localhost:8000/api/core/
+
+
+### List Categories
+GET http://localhost:8000/api/core/categories/
+
+
+### Create Category
+POST http://localhost:8000/api/core/categories/
+Content-Type: application/json
+
+{
+  "name": "Food",
+  "type": "EX",
+  "description": "Expenses on groceries and eating out"
+}
+
+
+### Get Single Category
+GET http://localhost:8000/api/core/categories/1/
+
+
+### Update Category (PATCH)
+PATCH http://localhost:8000/api/core/categories/1/
+Content-Type: application/json
+
+{
+  "description": "Updated description"
+}
+
+
+### Delete Category
+DELETE http://localhost:8000/api/core/categories/1/
+
+
+### Create Transaction
+POST http://localhost:8000/api/core/transactions/
+Content-Type: application/json
+
+{
+  "category": 1,
+  "amount": 500.00,
+  "description": "August Rent",
+  "type": "expense",
+  "is_recurring": false
+}
+
+
+### List Transactions
+GET http://localhost:8000/api/core/transactions/
+
+
+### Get Transaction by ID
+GET http://localhost:8000/api/core/transactions/3/
+
+
+### Update Transaction (PUT)
+PUT http://localhost:8000/api/core/transactions/3/
+Content-Type: application/json
+
+{
+  "category": 2,
+  "amount": 600.00,
+  "description": "Updated August Rent",
+  "type": "expense",
+  "is_recurring": false
+}
+
+
+### Partial Update Transaction (PATCH)
+PATCH http://localhost:8000/api/core/transactions/3/
+Content-Type: application/json
+
+{
+  "amount": 600.00
+}
+
+
+### Delete Transaction
+DELETE http://localhost:8000/api/core/transactions/3/
+
+
+### Create Budget
+POST http://localhost:8000/api/core/budgets/
+Content-Type: application/json
+
+{
+  "category": 1,
+  "month": "2025-08-01",
+  "amount": 1000.00
+}
+
+
+### List Budgets
+GET http://localhost:8000/api/core/budgets/
+
+
+### Get Budget by ID
+GET http://localhost:8000/api/core/budgets/1/
+
+
+### Update Budget (PATCH)
+PATCH http://localhost:8000/api/core/budgets/1/
+Content-Type: application/json
+
+{
+  "amount": 1200.00
+}
+
+
+### Delete Budget
+DELETE http://localhost:8000/api/core/budgets/1/
+
+
+### Create Goal
+POST http://localhost:8000/api/core/goals/
+Content-Type: application/json
+
+{
+  "title": "Vacation Fund",
+  "target_amount": 5000.00,
+  "current_amount": 1000.00,
+  "deadline": "2025-12-31",
+  "description": "Saving up for December vacation"
+}
+
+
+### List Goals
+GET http://localhost:8000/api/core/goals/
+
+
+### Get Goal by ID
+GET http://localhost:8000/api/core/goals/1/
+
+
+### Update Goal
+PATCH http://localhost:8000/api/core/goals/1/
+Content-Type: application/json
+
+{
+  "current_amount": 1500.00
+}
+
+
+### Delete Goal
+DELETE http://localhost:8000/api/core/goals/1/
+
