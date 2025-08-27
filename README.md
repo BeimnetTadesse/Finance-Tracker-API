@@ -139,11 +139,24 @@ Monitor progress toward financial goals.
 
 ---
 
+## Profile & User Stats
+
+Manage user profile and view personal statistics.
+
+| Endpoint                   | Method      | Description                                 |
+| -------------------------- | ----------- | ------------------------------------------- |
+| `/accounts/profile/`       | GET         | Retrieve logged-in user’s profile           |
+| `/accounts/profile/`       | PUT         | Update the entire logged-in user’s profile |
+| `/accounts/profile/`       | PATCH       | Partially update logged-in user’s profile  |
+| `/core/stats/`             | GET         | Retrieve statistics for the logged-in user |
+
+---
+
 ## Tech Stack
 
 * Django & Django REST Framework
 * JWT Authentication (`djangorestframework-simplejwt`)
-* MySQL or PostgreSQL (depending on deployment)
+* SQLite
 
 ---
 
